@@ -20,13 +20,16 @@ def compressed(input_file, output_file):
 def decompressed(input_file, output_file):
     with open(input_file, 'r') as file_in:
         text = file_in.read()
+
     decompressed_text = ''
+    count = ''
 
     for char in text:
         if char.isdigit():
-            count = char
+            count += char
         else:
             decompressed_text += int(count) * char
+            count = ''
     
     with open(output_file, 'w') as file_out:
         file_out.write(decompressed_text)
